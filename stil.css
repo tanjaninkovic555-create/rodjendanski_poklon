@@ -1147,13 +1147,18 @@ body{
 /* ZA JOŠ MANJE EKRANE (MOBITELI) */
 @media (max-width: 600px) {
     .typewriter {
-        font-size: 19px;
-        width: auto;
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .body{
+        align-items: center;
     }
 
     .blok{
         width: 80%;
-        height: 60%;
+        height: 70%;
     }
     .hero-title-animate-bounce {
         font-size: 2rem;
@@ -1218,7 +1223,7 @@ body{
 
     /* Blok da bude širi na telefonu */
     .blok1 {
-        width: 60%%;
+        width: 60%;
         height: auto;
         padding: 15px;
     }
@@ -1234,7 +1239,7 @@ body{
     .game-stats {
         display: flex;
         justify-content: space-between;
-        gap: 1 rem;
+        gap: 1rem;
         width: 90%;
     }
 
@@ -1266,14 +1271,15 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem;
+        gap: 1rem;
         margin-top: 1rem;
     }
 
     /* Puzzle tabla malo manja da stane lijepo */
     .puzzle-board {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        height: auto;
+        gap: 1px;
     }
 
     .puzzle-piece {
