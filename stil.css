@@ -1148,8 +1148,11 @@ body{
 @media (max-width: 600px) {
     .typewriter {
         font-size: 16px;
-        width: 100%;
-        text-align: center;
+        width: 0;                 /* počinje od nule */
+        overflow: hidden;          /* sakriva ostatak teksta */
+        border-right: 3px solid rgb(19, 5, 5); /* trepćuća linija */
+        white-space: nowrap;       /* tekst u jednom redu */
+        animation: typewriter 4s steps(26) 1s forwards, softPop 1.6s ease-in-out infinite;
     }
 
     .body{
@@ -1159,6 +1162,7 @@ body{
     .blok{
         width: 80%;
         height: 70%;
+        margin: 4%;
     }
     .hero-title-animate-bounce {
         font-size: 2rem;
@@ -1278,8 +1282,8 @@ body{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        width: 90vw;       /* zauzima skoro cijeli ekran */
-        max-width: 350px;  /* ali ne prelazi 350px */
+        width: 95vw;       /* zauzima skoro cijeli ekran */
+        max-width: 400px;  /* ali ne prelazi 350px */
         aspect-ratio: 1;   /* kvadrat */
     }
 
@@ -1287,6 +1291,11 @@ body{
         width: 100%;
         aspect-ratio: 1;
         border-radius: 5px;
+    }
+    .solution-preview {
+        width: 90%;        /* rješenje ispod puzli */
+        max-width: 350px;
+        margin: 10px auto 30px auto;
     }
 }
 
