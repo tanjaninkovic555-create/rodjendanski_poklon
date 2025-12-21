@@ -1267,24 +1267,24 @@ body{
     }
 
     /* Puzzle ispod svega */
-    .puzzle-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        width: 90%;
+     .puzzle-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* tri puzle u redu */
+        gap: 5px; /* minimalan razmak između puzli */
+        max-width: 350px; /* table se ne šire previše */
+        margin: 1rem auto;
+        justify-items: center;
     }
 
-    /* Puzzle tabla malo manja da stane lijepo */
     .puzzle-board {
         width: 100%;
-        height: 100%;
-        gap: 1px;
+        height: auto;
+        gap: 2px;
     }
 
     .puzzle-piece {
-        background-size: 300% 300%;
+        width: 100%;
+        aspect-ratio: 1;
     }
 
 
