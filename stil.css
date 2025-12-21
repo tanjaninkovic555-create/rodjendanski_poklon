@@ -1266,27 +1266,6 @@ body{
         font-size: 0.95rem;
     }
 
-    /* Puzzle ispod svega */
-     .puzzle-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* tri puzle u redu */
-        gap: 5px; /* minimalan razmak između puzli */
-        max-width: 350px; /* table se ne šire previše */
-        margin: 1rem auto;
-        justify-items: center;
-    }
-
-    .puzzle-board {
-        width: 100%;
-        height: auto;
-        gap: 2px;
-    }
-
-    .puzzle-piece {
-        width: 100%;
-        aspect-ratio: 1;
-    }
-
 
 }
 
