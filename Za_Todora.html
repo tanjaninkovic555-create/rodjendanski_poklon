@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stil.css">
+    <link 
+            href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet" rel="stylesheet"
+            rel ="stylesheet">
+    
+    <title>SRECAN ROĐENDAN!!</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="hearts">
+    <!-- Srca -->
+    <span class="srce" style="left:8%; bottom:-50px;">💙</span>
+    <span class="srce" style="left:25%; bottom:-50px;">💖</span>
+    <span class="srce" style="left:40%; bottom:-50px;">💗</span>
+    <span class="srce" style="left:55%; bottom:-50px;">💙</span>
+    <span class="srce" style="left:70%; bottom:-50px;">💖</span>
+    <span class="srce" style="left:85%; bottom:-50px;">💗</span>
+
+    <!-- Cvjetići -->
+    <span class="cvet" style="left:12%; top:-50px;">🌸</span>
+    <span class="cvet" style="left:28%; top:-50px;">🌸</span>
+    <span class="cvet" style="left:45%; top:-50px;">🌸</span>
+    <span class="cvet" style="left:62%; top:-50px;">🌸</span>
+    <span class="cvet" style="left:78%; top:-50px;">🌸</span>
+
+    <!-- Zvjezdice -->
+    <span class="zvezda" style="left:15%; top:10%;">✨</span>
+    <span class="zvezda" style="left:35%; top:63%;">✨</span>
+    <span class="zvezda" style="left:55%; top:40%;">✨</span>
+    <span class="zvezda" style="left:66%; top:89%;">✨</span>
+    <span class="zvezda" style="left:75%; top:60%;">✨</span>
+    <span class="zvezda" style="left:90%; top:30%;">✨</span>
+    </div>
+
+    <div id="confettiContainer" style="position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1500; display:none;"></div>
+
+    <section class="naslov" id="naslov">
+        <div class="naslov-content">
+            <h1 class="typewriter" id="typewriter">Srećan rođendan majmunče! 💙 </h1>
+        </div>
+        
+    </section>
+
+    <div class="blok" id="prviBlok">  
+        <p class="zdravo">Zdravooooooo Toškee</p>
+        <p>💗</p>
+        <h1></h1>
+        <p class="zdravo1"> Odigraj kratku igricu da bi otključao svoje iznenađenje!</p>
+        <h1></h1>
+        <button class="btnStart" onclick="sakrijPrviBlok()">Start -></button>
+    </div> 
+
+    <div class="blok1" id="drugiBlok" style="opacity: 0; display: none;">
+        <div class="game-controls">
+            <div class="difficulty-selector">
+                <label>Težina nivoa: </label>
+                <select id="difficultySelect">
+                    <option value="easy">Easy (3x3)</option>
+                </select>
+            </div>
+            <div class="game-stats">
+                <div class="stat">
+                    <span>Vrijeme:</span>
+                    <span id ="gameTimer">00:00</span>
+                </div>
+                <div class="stat">
+                    <span>Potezi:</span>
+                    <span id="moveCounter">0</span>
+                </div>
+            </div>
+            <button class="game-btn" id="newGameBtn">Nova igra</button>
+            <button class="game-btn" id="showSolutionBtn">Prikaži rješenje</button>
+            <div style="width:100%; text-align:center; margin-top:10px;">Složeno: <span id="piecesCompleted">0 / 6</span>
+    </div>
+        </div>
+        <div class="puzzle-container">
+            <div class="puzzle-board" id="puzzleBoard">
+
+            </div>
+            <div class="solution-preview" id="solutionPreview">
+                <h4>Pregled rješenja:</h4>
+                <img src="" alt="Solution" id="solutionImage">
+            </div>
+        </div>
+        <div class="game-completion" id="gameCompletion" style="display: none;">
+            <div class="completion-message">
+                <h3>🎉 Čestitke! 🎉</h3>
+                <p>Riješio si puzle!</p>
+                <p>Vrijeme: <span id="finalTime"></span></p>
+                <p>Potezi: <span id="finalMoves"></span></p>
+                <button class="game-btn" id="playAgainBtn" onclick="startNewGame()">Igraj ponovo</button>
+                <button class="game-btn" id="cakeBtn" style="display: none;" onclick="showSurprise()">🎂 Torta</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="treciBlok" id="treciBlok" style="display:none; text-align:center; margin-top:50px;">
+        <audio id="bgMusic" src="audio/rodjendan.mp3" loop></audio>
+        <p class="paragraf">Oduvaj svjećice sa svoje torte!</p>
+
+        <div class="cake-wrapper">
+
+            <div class="candles">
+                 <div class="candle"><div class="flame"></div></div>
+                 <div class="candle"><div class="flame"></div></div>
+                <div class="candle"><div class="flame"></div></div>
+            </div>
+
+            <div class="cake-layer layer-top">
+                <div class="icing"></div>
+            </div>
+
+            <div class="cake-layer layer-middle">
+                <div class="icing"></div>
+            </div>
+
+            <div class="cake-layer layer-bottom">
+                <div class="icing"></div>
+            </div>
+
+        </div>
+        <br>
+        <button id="muzikaBtn" class="game-btn">Pusti svoju omiljenu pjesmu 😂</button>
+        <br><br>
+        <button id="micBtn" class="game-btn">Uključi mikrofon</button>
+    </div>
+<nav class="navbar" id="navbar" style="display: none;">
+    <div class="nav-container">
+        <div class="nav-logo">Malo rođendansko slavlje! 🎂🎈</div>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#music" class="nav-link">Music</a></li>
+            <li><a href="#letter" class="nav-link">Letter</a></li>
+        </ul>
+    </div>
+</nav>
+<section id="home" class="hero" style="display: none;">
+    <div class="hero-content">
+        <h1 class="hero-title-animate-bounce">Srećan rođendan Todore! 🎉</h1>
+        <p class="hero-subtitle">Proslavimo ovaj dan zajedno!</p>
+        <div class="birthday-candles">
+            <div class="svijeca">
+                <div class="plamen"></div>
+                <div class="vosak"></div>
+                <div class="wax"></div>
+            </div>
+            <div class="svijeca">
+                <div class="plamen"></div>
+                <div class="vosak"></div>
+                <div class="wax"></div>
+            </div>
+            <div class="svijeca">
+                <div class="plamen"></div>
+                <div class="vosak"></div>
+                <div class="wax"></div>
+            </div>
+        </div>
+        <button class="cta-button" id="celebrateBtn">Počnimo sa proslavom! 🎊</button>
+    </div>
+</section>
+
+<section id="gallery" class="gallery-section" style="display: none;">
+    <div class="container">
+        <h2 class="section-title"> 📸 Naše uspomene</h2>
+        <div class="gallery-controls">
+            <button class="gallery-btn" id="slikeBtn">Slike</button>
+            <button class="gallery-btn" id="videoBtn">Video</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika1.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika2.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika3.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika4.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika5.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika6.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika7.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika8.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika9.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika10.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika11.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika12.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika13.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika14.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika15.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika16.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika17.jpeg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika18.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika19.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika20.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika21.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika22.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika24.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika25.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika26.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika27.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika28.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika29.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika30.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika31.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika32.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika33.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika35.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika36.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika37.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika38.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika39.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika40.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika41.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika42.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika43.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika44.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika45.jpeg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-caption="Zabranjeno pušenje">
+                <img src="slike/slika46.jpg" alt="pusenje">
+                <div class="gallery-overlay">
+                    <h3>U društvu poznatih 😂</h3>
+                    <p>Lokacija nepoznata</p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-slideshow" id="gallerySlideshow" style="display: none;">
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <video src="video/video14.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video2.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video3.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video4.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video5.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video6.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video7.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video8.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video9.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video10.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video11.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video12.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video13.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video1.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video15.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video16.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video17.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video18.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video19.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video20.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video21.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video22.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video23.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video24.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video25.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video26.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video27.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video8.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video9.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video30.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video31.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video32.mp4"></video>
+                </div>
+                <div class="slide active">
+                    <video src="video/video33.mp4"></video>
+                </div>
+            </div>
+            <button class="slide-btn prev" id="prevSlideBtn">⇦</button>
+            <button class="slide-btn next" id="nextSlideBtn">⇨</button>
+            <div class="slide-indicator">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">✕</span>
+    <img id="lightboxImg" src="" alt="preview">
+</div>
+<section id="music" class="music-section" style="display: none;">
+    <div class="container">
+        <h2 class="section-title"> 🎶 Rođendanska plejlista</h2>
+        <div class="music-player">
+            <div class="player-display">
+                <div class="album-art">
+                    <div class="vinyl-record" id="vinylRecord">
+                        <div class="vinyl-center"></div>
+                    </div>
+                </div>
+                <div class="track-info">
+                    <h3 id="trackTitle">Neki naslov</h3>
+                    <p id="trackArtist">Autor</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">2:30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-controls">
+                <button class="control-btn" id="prevTrackBtn">⏪</button>
+                <button class="control-btn play-pause-btn" id="playPauseBtn">▶️</button>
+                <button class="control-btn" id="nextTrackBtn">⏩</button>
+            </div>
+
+            <div class="volume-control">
+                <span>🔊</span>
+                <input type="range" id="volumeSlider" min="0" max="100" value="50">
+            </div>
+
+            <div class="playlist">
+                <h4>🎵 Plejlista</h4>
+                <div class="playlist-item active" data-track="0">
+                    <span>1. Šuti moj dječače plavi</span>
+                    <span>3:19</span>
+                </div>
+                <div class="playlist-item active" data-track="1">
+                    <span>2. Bigmouth Strikes Again</span>
+                    <span>3:13</span>
+                </div>
+                <div class="playlist-item active" data-track="1">
+                    <span>3. Jenny Jenny</span>
+                    <span>3:46</span>
+                </div>
+                <div class="playlist-item active" data-track="1">
+                    <span>4. Buč Kesedi - Euforija</span>
+                    <span>2:53</span>
+                </div>
+                <div class="playlist-item active" data-track="1">
+                    <span>5. Tamo gdje ljubav počinje</span>
+                    <span>5:34</span>
+                </div>
+                <div class="playlist-item active" data-track="1">
+                    <span>6. Poker u dvoje</span>
+                    <span>3:04</span>
+                </div>
+                <div class="playlist-item active" data-track="1">
+                    <span>7. E moj Saša</span>
+                    <span>4:10</span>
+                </div>
+                <div class="playlist-item active" data-track="1">
+                    <span>8. Cesarica</span>
+                    <span>4:16</span>
+                </div>
+            </div>
+
+            <audio id="audioPlayer" preload="metadata">
+                <source src="" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</section>
+
+<div class="pismoBlok" id="letter" style="display: none;">
+    <br>
+    <div class="heartWrap" id="heartWrap">
+        <div class="Pismoheart" id="pismoSrce">❤️</div>
+    </div>
+    <br><br>
+    <p class="pismoTekst">Ovo je pismo za tebe!</p>
+</div>
+
+<script src="js.js"></script>
+</body>
+</html>
