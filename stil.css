@@ -136,6 +136,7 @@ body{
     color: rgb(119, 11, 11);
     font-size: 19px;
     font-family: 'Abril',cursive;
+    font-weight: 500;
 }
 
 .btnStart{
@@ -159,6 +160,7 @@ body{
     position: relative;
     z-index: 2;
     text-align: center;
+    flex-direction: column;
 }
 
 .game-controls{
@@ -1142,122 +1144,6 @@ body{
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-@media (max-width: 1024px) {
-    .blok, .blok1, .treciBlok, .pismoBlok, .noviBlok {
-        width: 90%;
-        margin: 20px auto;
-        padding: 15px;
-    }
-
-    .blok {
-        height: auto;
-    }
-
-    .blok1 {
-        height: auto;
-    }
-
-    .treciBlok {
-        min-height: auto;
-        padding: 20px;
-    }
-
-    .pismoBlok, .noviBlok {
-        width: 90%;
-        height: auto;
-        padding: 20px;
-    }
-
-    .cake-wrapper {
-        width: 180px;
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .cake-layer.layer-top {
-        width: 90px;
-        height: 40px;
-    }
-
-    .cake-layer.layer-middle {
-        width: 130px;
-        height: 60px;
-    }
-
-    .cake-layer.layer-bottom {
-        width: 180px;
-        height: 75px;
-    }
-
-    .flame {
-        width: 8px;
-        height: 12px;
-    }
-
-    .candles {
-        gap: 10px;
-    }
-
-    .typewriter {
-        font-size: 35px;
-    }
-
-    .hero-title-animate-bounce {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .gallery-item img {
-        height: 180px;
-    }
-
-    .slide video {
-        height: 250px;
-    }
-
-    .music-player {
-        max-width: 95%;
-        padding: 1rem;
-    }
-
-    .puzzle-container {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        max-width: 95%;
-    }
-
-    .puzzle-board {
-        width: 100%;
-        max-width: 250px;
-        height: 250px;
-    }
-
-    .solution-preview {
-        width: 150px;
-    }
-
-    .player-controls {
-        flex-wrap: wrap;
-    }
-
-    .cta-button, .game-btn, .gallery-btn {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-    }
-
-    .nav-container {
-        padding: 10px;
-    }
-
-    .nav-menu {
-        gap: 1rem;
-    }
-}
-
 /* ZA JOŠ MANJE EKRANE (MOBITELI) */
 @media (max-width: 600px) {
     .typewriter {
@@ -1324,4 +1210,76 @@ body{
         height: 50px;
         font-size: 1.2rem;
     }
+
+    @media (max-width: 768px) {
+
+    /* Blok da bude širi na telefonu */
+    .blok1 {
+        width: 95%;
+        height: auto;
+        padding: 15px;
+    }
+
+    /* Kontrole idu jedna ispod druge */
+    .game-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    /* Vrijeme + potezi ostaju u jednom redu */
+    .game-stats {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .stat {
+        flex: 1;
+        padding: 0.8rem;
+    }
+
+    .stat span:last-child {
+        font-size: 1.2rem;
+    }
+
+    /* Dugmad puna širina, jedno ispod drugog */
+    .game-btn {
+        width: 100%;
+        padding: 0.9rem;
+        font-size: 1rem;
+    }
+
+    /* "Složeno" centrirano ispod dugmadi */
+    .game-controls > div[style*="Složeno"] {
+        margin-top: 0.5rem !important;
+        font-size: 0.95rem;
+    }
+
+    /* Puzzle ispod svega */
+    .puzzle-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    /* Puzzle tabla malo manja da stane lijepo */
+    .puzzle-board {
+        width: 260px;
+        height: 260px;
+    }
+
+    .puzzle-piece {
+        background-size: 300% 300%;
+    }
+
+    /* Sakrij preview rješenja na telefonu (opciono) */
+    .solution-preview {
+        display: none;
+    }
+}
+
 }
