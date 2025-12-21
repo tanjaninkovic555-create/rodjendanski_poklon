@@ -1271,7 +1271,9 @@ body{
     }
 
     .puzzle-container {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px 5px;
         justify-content: center;
         align-items: center;
         padding: 0 10px;
@@ -1282,8 +1284,9 @@ body{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        width: 95vw;       /* zauzima skoro cijeli ekran */
-        max-width: 400px;  /* ali ne prelazi 350px */
+        width: 90vw;       /* zauzima skoro cijeli ekran */
+        max-width: 350px;
+        height: 90vw;  /* ali ne prelazi 350px */
         aspect-ratio: 1;   /* kvadrat */
     }
 
@@ -1291,6 +1294,9 @@ body{
         width: 100%;
         aspect-ratio: 1;
         border-radius: 5px;
+        transition: all 0.3s ease;
+        aspect-ratio: 1;
+        cursor: pointer;
     }
     .solution-preview {
         width: 90%;        /* rješenje ispod puzli */
