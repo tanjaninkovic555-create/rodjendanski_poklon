@@ -17,7 +17,7 @@ body{
 
 .typewriter{
     font-family: 'Abril',cursive;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 700;
     background: linear-gradient(
         90deg,
@@ -26,10 +26,11 @@ body{
         #fcd4e3,
         #7bb8ff,
         #4fa3ff);
-     -webkit-background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke:1.3px black;
-    margin-bottom: 20px;
+    margin-bottom:20px;
+    margin-top: 50px;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid rgb(19, 5, 5);
@@ -109,8 +110,8 @@ body{
 }
 
 .blok{
-    width: 30%;
-    height: 250px;
+    width: 450px;
+    height: 500px;
     padding: 20px;
     background-color: white;
     margin: 30px auto 50px auto;
@@ -124,7 +125,7 @@ body{
 
 .zdravo{
     color: rgb(119, 11, 11);
-    font-size: 20px;
+    font-size: 22px;
     font-family: 'Abril',cursive;
     font-weight: 900;
     text-shadow: 
@@ -133,7 +134,7 @@ body{
 }
 .zdravo1{
     color: rgb(119, 11, 11);
-    font-size: 13px;
+    font-size: 19px;
     font-family: 'Abril',cursive;
 }
 
