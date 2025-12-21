@@ -133,7 +133,6 @@ function generatePuzzle(imageUrl){
     puzzleBoard.innerHTML='';
     puzzlePieces=[];
 
-    
     const solutionImage=document.getElementById('solutionImage');
     if(solutionImage) solutionImage.src=imageUrl;
 
@@ -161,6 +160,7 @@ function generatePuzzle(imageUrl){
 
         puzzleBoard.appendChild(piece);
         puzzlePieces.push(piece);
+        enableTouchForPuzzle(piece);
     }
 }
 
@@ -324,11 +324,12 @@ document.addEventListener('DOMContentLoaded',function(){
     const celebrateBtn = document.getElementById('celebrateBtn');
     if(celebrateBtn){
         celebrateBtn.addEventListener('click', celebrateNow);
+        celebrateBtn.addEventListener('touchend', celebrateNow);
     }
 
     const videoBtn = document.getElementById('videoBtn');
     if(videoBtn) {
-        videoBtn.addEventListener('click', () => {
+        const videoHandler = () => {
             stopBackgroundMusic();
             const galleryGrid = document.getElementById('galleryGrid');
             const gallerySlideshow = document.getElementById('gallerySlideshow');
@@ -336,52 +337,103 @@ document.addEventListener('DOMContentLoaded',function(){
             if(galleryGrid) galleryGrid.style.display = 'none';
             if(gallerySlideshow) gallerySlideshow.style.display = 'block';
 
-            generateVideoSlides(); // generiše slide-ove za videe
+            generateVideoSlides();
 
-            // Pusti prvi video automatski
             const firstSlide = document.querySelector('#gallerySlideshow .slide');
             if(firstSlide){
                 const firstVideo = firstSlide.querySelector('video');
                 if(firstVideo) firstVideo.play();
             }
-        });
+        };
+
+        videoBtn.addEventListener('click', videoHandler);
+        videoBtn.addEventListener('touchend', videoHandler);
     }
 
     const imagesBtn = document.getElementById('slikeBtn');
     if(imagesBtn){
-        imagesBtn.addEventListener('click', () => {
+        const imagesHandler = () => {
             const galleryGrid = document.getElementById('galleryGrid');
             const gallerySlideshow = document.getElementById('gallerySlideshow');
 
-            if(galleryGrid) galleryGrid.style.display = 'grid'; // pokaži grid
-            if(gallerySlideshow) gallerySlideshow.style.display = 'none'; // sakrij slideshow
+            if(galleryGrid) galleryGrid.style.display = 'grid';
+            if(gallerySlideshow) gallerySlideshow.style.display = 'none';
 
-            // Za svaki video u slideshow-u, pauziraj ga
             const slides = document.querySelectorAll('#gallerySlideshow .slide video');
             slides.forEach(video => {
                 video.pause();
-                video.currentTime = 0; // resetuj na početak
+                video.currentTime = 0;
             });
+
             const music = document.getElementById('bgMusic');
             if (music && music.paused) {
                 music.play().catch(() => {});
             }
-        });
+        };
+        imagesBtn.addEventListener('click', imagesHandler);
+        imagesBtn.addEventListener('touchend', imagesHandler);
     }
 
     const pismoSrce = document.getElementById("pismoSrce");
     const pismoBlok = document.getElementById("letter");
     const noviBlok = document.getElementById("noviBlok");
 
-    pismoSrce.addEventListener("click", () => {
-    const heartWrap = document.getElementById("heartWrap");
-    heartWrap.innerHTML = ""; // ukloni srce
-    const pismoTekst = document.querySelector(".pismoTekst");
-    pismoTekst.innerHTML = "<h2>Novi sadržaj 💖</h2><p>Ovo je novi blok koji se pojavi</p>";
-    });
+    if(pismoSrce){
+        const pismoHandler = () => {
+            const heartWrap = document.getElementById("heartWrap");
+            heartWrap.innerHTML = ""; 
+            const pismoTekst = document.querySelector(".pismoTekst");
+            pismoTekst.innerHTML = "<h2>Novi sadržaj 💖</h2><p>Ovo je novi blok koji se pojavi</p>";
+        };
 
+        pismoSrce.addEventListener("click", pismoHandler);
+        pismoSrce.addEventListener("touchend", pismoHandler);
+    }
 
+    // Dugme za puštanje muzike
+const muzikaBtn = document.getElementById('muzikaBtn');
+if(muzikaBtn){
+    const playMusic = () => {
+        const music = document.getElementById('bgMusic');
+        if(music){
+            music.currentTime = 0;
+            music.play().catch(err => console.log("Muzika nije mogla da se pusti:", err));
+        }
+    };
+    muzikaBtn.addEventListener('click', playMusic);
+    muzikaBtn.addEventListener('touchend', playMusic);
+}
 
+// Dugme za mikrofon
+const micBtn = document.getElementById('micBtn');
+if(micBtn){
+    const micHandler = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const source = audioContext.createMediaStreamSource(stream);
+            const analyser = audioContext.createAnalyser();
+            source.connect(analyser);
+            analyser.fftSize = 256;
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+            const checkBlow = () => {
+                analyser.getByteFrequencyData(dataArray);
+                const sum = dataArray.reduce((a,b) => a+b, 0);
+                if(sum > 10000){
+                    blowOutCandles();
+                    return;
+                }
+                requestAnimationFrame(checkBlow);
+            }
+            checkBlow();
+        } catch(err) {
+            console.log("Greška pri pristupu mikrofonu:", err);
+        }
+    };
+    micBtn.addEventListener('click', micHandler);
+    micBtn.addEventListener('touchend', micHandler);
+}
 
 });
 
@@ -411,44 +463,6 @@ function showSurprise(){
     const treciBlok = document.getElementById('treciBlok');
     if(treciBlok) treciBlok.style.display = 'block';
 }
-// 1. Dugme za puštanje pjesme
-document.getElementById('muzikaBtn').addEventListener('click', function() {
-    const music = document.getElementById('bgMusic');
-    if (music) {
-        music.currentTime = 0;
-        music.play().catch(err => console.log("Muzika nije mogla da se pusti:", err));
-    }
-});
-
-// 2. Dugme za uključivanje mikrofona
-document.getElementById('micBtn').addEventListener('click', async function() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const source = audioContext.createMediaStreamSource(stream);
-        const analyser = audioContext.createAnalyser();
-        source.connect(analyser);
-        analyser.fftSize = 256;
-        const dataArray = new Uint8Array(analyser.frequencyBinCount);
-
-        const checkBlow = () => {
-            analyser.getByteFrequencyData(dataArray);
-            const sum = dataArray.reduce((a,b) => a+b, 0);
-            if(sum > 10000){ // prag za “puhanje”
-                blowOutCandles();
-                return;
-            }
-            requestAnimationFrame(checkBlow);
-        }
-        checkBlow();
-    } catch(err) {
-        console.log("Greška pri pristupu mikrofonu:", err);
-    }
-});
-
-
-
-
 
 function blowOutCandles() {
     document.querySelectorAll('.flame').forEach(f => f.style.display = 'none');
@@ -740,6 +754,9 @@ function generateVideoSlides() {
         const videoEl = document.createElement('video');
         videoEl.src = src;
         videoEl.controls = true;
+        videoEl.playsInline = true;
+        videoEl.muted = false;
+
 
         videoEl.addEventListener('play', () => {
             stopBackgroundMusic();
@@ -950,3 +967,26 @@ function stopAndForgetBackgroundMusic() {
 }
 
 
+function enableTouchForPuzzle(piece) {
+    let startX, startY;
+    piece.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        draggedElement = piece;
+        piece.classList.add('dragging');
+    });
+
+    piece.addEventListener('touchend', (e) => {
+        piece.classList.remove('dragging');
+        draggedElement = null;
+    });
+
+    piece.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // sprječava scroll dok dodirujemo puzzlu
+        const touch = e.touches[0];
+        const target = document.elementFromPoint(touch.clientX, touch.clientY);
+        if(target && target.classList.contains('puzzle-piece') && target !== piece){
+            handleDrop({ target });
+        }
+    });
+}
