@@ -1266,7 +1266,28 @@ body{
         font-size: 0.95rem;
     }
 
+    .puzzle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        margin: 20px auto;
+    }
 
+    .puzzle-board {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        width: 90vw;       /* zauzima skoro cijeli ekran */
+        max-width: 350px;  /* ali ne prelazi 350px */
+        aspect-ratio: 1;   /* kvadrat */
+    }
+
+    .puzzle-piece {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 5px;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -1358,9 +1379,9 @@ body{
     }
 
     .puzzle-board {
-        width: 100%;
-        max-width: 250px;
-        height: 250px;
+        width: 80vw;
+        max-width: 400px;
+        height: auto;
     }
 
     .solution-preview {
