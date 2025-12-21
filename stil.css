@@ -1155,6 +1155,14 @@ body{
         animation: typewriter 4s steps(26) 1s forwards, softPop 1.6s ease-in-out infinite;
     }
 
+    .treciBlok{
+        width: 90%;
+        min-height: auto;
+        padding: 20px;
+        margin: 20px auto;
+        position: relative;
+    }
+    
     .body{
         align-items: center;
     }
@@ -1302,6 +1310,21 @@ body{
         width: 90%;        /* rješenje ispod puzli */
         max-width: 350px;
         margin: 10px auto 30px auto;
+    }
+    .puzzle-piece:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+    }
+
+    .puzzle-piece.dragging{
+    opacity: 0.7;
+    transform: rotate(5deg) scale(1.1);
+    }
+
+    .puzzle-piece.empty{
+    background: rgba(255,255,255,0.5);
+    border-style: dashed;
     }
 }
 
