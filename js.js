@@ -965,65 +965,45 @@ function stopAndForgetBackgroundMusic() {
     // ukloni src da se nikad više ne pusti
     bgMusic.src = '';
 }
-
-
 function enableTouchForPuzzle(piece) {
-    let draggedElement = null;
-    let startX = 0;
-    let startY = 0;
-    let offsetX = 0;
-    let offsetY = 0;
+    let touchMoved = false;
 
     piece.addEventListener('touchstart', (e) => {
         e.preventDefault();
+        touchMoved = false;
 
+        // isto kao mouse drag
         draggedElement = piece;
         piece.classList.add('dragging');
-
-        // Pozicija dodira u odnosu na element
-        const touch = e.touches[0];
-        const rect = piece.getBoundingClientRect();
-        offsetX = touch.clientX - rect.left;
-        offsetY = touch.clientY - rect.top;
-
-        // Promijeni na absolute da možemo pomjerati
-        piece.style.position = 'absolute';
-        piece.style.zIndex = 1000;
-        piece.style.left = `${rect.left}px`;
-        piece.style.top = `${rect.top}px`;
-
-        startX = rect.left;
-        startY = rect.top;
     });
 
     piece.addEventListener('touchmove', (e) => {
         e.preventDefault();
-        if (!draggedElement) return;
-
-        const touch = e.touches[0];
-        draggedElement.style.left = `${touch.clientX - offsetX}px`;
-        draggedElement.style.top = `${touch.clientY - offsetY}px`;
+        touchMoved = true;
     });
 
     piece.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
         if (!draggedElement) return;
 
-        // Provjeri element ispod prsta
         const touch = e.changedTouches[0];
         const target = document.elementFromPoint(touch.clientX, touch.clientY);
 
-        if (target && target.classList.contains('puzzle-piece') && target !== draggedElement) {
-            // Zamijeni pozicije
-            handleDrop({ target });
+        // simuliraj drop koristeći POSTOJEĆU logiku
+        if (
+            touchMoved &&
+            target &&
+            target.classList.contains('puzzle-piece') &&
+            target !== draggedElement
+        ) {
+            handleDrop({ 
+                preventDefault: () => {}, 
+                target 
+            });
         }
 
-        // Vrati element nazad u grid
-        draggedElement.style.position = '';
-        draggedElement.style.left = '';
-        draggedElement.style.top = '';
-        draggedElement.style.zIndex = '';
-        draggedElement.classList.remove('dragging');
+        piece.classList.remove('dragging');
         draggedElement = null;
     });
 }
-
