@@ -1279,7 +1279,7 @@ body{
         text-align: center;
     }
     .cake-wrapper {
-        margin-left: 0;       /* uklanja pomak lijevo */
+        margin-left: 5px;       /* uklanja pomak lijevo */
         margin-top: 30px;     /* prostor od teksta */
         display: flex;
         flex-direction: column;
@@ -1287,13 +1287,13 @@ body{
         width: auto;          /* slojevi zadržavaju svoje dimenzije */
     }
     #muzikaBtn{
-        width: 60%;
+        width: 70%;
         padding: 0.9rem;
         font-size: 1rem;
         align-items: center;
     }
     #micBtn{
-        width: 60%;
+        width: 70%;
         padding: 0.9rem;
         font-size: 1rem;
         align-items: center;
