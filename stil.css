@@ -331,7 +331,7 @@ body{
 /* TEKST */
 .paragraf{
     color: rgb(119, 11, 11);
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Abril', cursive;
     font-weight: 900;
     margin-bottom: 40px;
@@ -1272,5 +1272,9 @@ body{
         padding: 30px;
         margin-left: 10px;
         margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
+    
 }
