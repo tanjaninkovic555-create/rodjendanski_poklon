@@ -1171,9 +1171,11 @@ body{
     }
     /* Blok da bude širi na telefonu */
     .blok1 {
-        width: 60%;
-        height: auto;
-        padding: 15px;
+        width: 80%;
+        height: 90%;
+        padding: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     /* Kontrole idu jedna ispod druge */
@@ -1228,9 +1230,9 @@ body{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        width: 90vw;       /* zauzima skoro cijeli ekran */
+        width: 70vw;       /* zauzima skoro cijeli ekran */
         max-width: 350px;
-        height: 90vw;  /* ali ne prelazi 350px */
+        height: 70vw;  /* ali ne prelazi 350px */
         aspect-ratio: 1;   /* kvadrat */
     }
 
