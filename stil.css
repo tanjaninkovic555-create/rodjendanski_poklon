@@ -314,10 +314,8 @@ body{
 }
 
 .treciBlok{
-    width: 40%;
-    max-width: 450px;
-    min-height: 520px;
-    padding: 30px;
+    width: 70%;
+    padding: 20px;
     background-color: white;
     margin: 30px auto 50px auto;
     border-radius: 25px;
@@ -327,6 +325,7 @@ body{
     align-items: center;
     position: relative; /* 👈 KLJUČNO */
     z-index: 5;
+    text-align: center;
 }
 
 /* TEKST */
