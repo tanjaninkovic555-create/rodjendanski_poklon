@@ -1306,7 +1306,7 @@ body{
     margin-left: 0;
     }
     .nav-link{
-        font-size: 0.5rem;
+        font-size: 0.8rem;
         margin-right: 0;
     }
     .hero{
@@ -1339,7 +1339,7 @@ body{
         background-image: inherit;
         background-size: cover;
         background-position: center;
-        filter: blur(8px);          /* 👈 blur samo na telefonu */
+        filter: blur(3px);          /* 👈 blur samo na telefonu */
         transform: scale(1.08);
         z-index: -1;
     }
