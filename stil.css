@@ -1230,9 +1230,9 @@ body{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        width: 70vw;       /* zauzima skoro cijeli ekran */
+        width: 80vw;       /* zauzima skoro cijeli ekran */
         max-width: 350px;
-        height: 70vw;  /* ali ne prelazi 350px */
+        height: 80vw;  /* ali ne prelazi 350px */
         aspect-ratio: 1;   /* kvadrat */
     }
 
@@ -1249,6 +1249,10 @@ body{
         max-width: 350px;
         margin: 10px auto 30px auto;
         flex-direction: column;
+    }
+    .solution-preview img{
+        width: 60vw;        /* rješenje ispod puzli */
+        height: 60vw;
     }
     .puzzle-piece:hover{
     transform: scale(1.05);
