@@ -377,7 +377,15 @@ document.addEventListener('DOMContentLoaded',function(){
     pismoTekst.innerHTML = "<h2>Novi sadržaj 💖</h2><p>Ovo je novi blok koji se pojavi</p>";
     });
 
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
 
+    if(prevBtn){
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    }
+    if(nextBtn){
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+    }
 
 
 });
