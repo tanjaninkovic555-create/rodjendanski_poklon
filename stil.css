@@ -1141,3 +1141,24 @@ body{
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
+@media (max-width: 768px) {
+    .typewriter {
+        font-size: 16px;
+        width: 0;
+        overflow: hidden;
+        border-right: 3px solid rgb(19, 5, 5);
+        white-space: nowrap;
+        animation: typewriter 4s steps(26) 1s forwards, softPop 1.6s ease-in-out infinite;
+        margin-top: 15px;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+    }
+
+    .blok {
+        width: 90%;
+        height: auto;
+        padding: 30px;
+        margin: 4px;
+    }
+}
