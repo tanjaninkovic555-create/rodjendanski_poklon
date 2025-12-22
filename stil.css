@@ -1331,4 +1331,15 @@ body{
         position: relative;
         z-index: 2;
     }
+    .slide.active{
+        width: 70vw;
+        height: auto;
+    }
+
+    .slide video{
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 14;
+    }
 }
