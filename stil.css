@@ -1299,11 +1299,11 @@ body{
         align-items: center;
     }
     .nav-logo{
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-left: 0;
     }
     .nav-link{
-        font-size: 0.5rem;
+        font-size: 1rem;
         margin-right: 0;
     }
     .hero{
@@ -1313,7 +1313,7 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-image: url("image/balon.avif");
+    background-image: url("image/baloniNovi.jpeg");
     position: relative;
     z-index: 6;
     }
@@ -1325,5 +1325,5 @@ body{
     font-weight: 600;
     animation: bounce 2s infinite;
     }
-    
+
 }
