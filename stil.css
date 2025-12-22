@@ -855,18 +855,17 @@ body{
     background: #ff6b9d;
 }
 
-.music-player{
+.music-player {
     background: rgba(255,255,255,0.95);
     border-radius: 20px;
-    padding: 2rem;
-    width: 100%;
-    max-width: 600px;
-    min-width: 400px;
-    margin: 0 auto;
+    padding: 20px;
+    width: 500px;          /* fiksna širina */
+    height: auto;
+    margin: 30px auto;     /* centrirano */
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     backdrop-filter: blur(10px);
     z-index: 9;
-    box-sizing: border-box;
+    box-sizing: border-box; /* važno za padding */
 }
 
 .player-display{
@@ -933,16 +932,11 @@ body{
     margin-bottom: 0.5rem;
     color: #333;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .track-info p{
     color: #666;
     margin-bottom: 1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .progress-container{
@@ -1353,14 +1347,11 @@ body{
     display: block;
     z-index: 14;
     }
-    .music-player{
-        width: 90%;
-        min-width: unset;
-    }
-    .track-info h3, 
-    .track-info p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .music-player {
+        width: 80%;          /* može biti fiksno ili relativno */
+        max-width: 500px;    /* ne prelazi 500px */
+        min-width: 500px;    /* fiksno, ne skuplja se */
+        padding: 20px;
+        margin: 20px auto;
     }
 }
