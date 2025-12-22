@@ -641,12 +641,12 @@ function initializeGalleryLightbox(){
         if(e.target === lightbox) closeLightbox();
     });
 
-    document.getElementById('prevSlideBtn').addEventListener('click', (e) => {
+    document.getElementById('prevSlideBtnSlika').addEventListener('click', (e) => {
         e.stopPropagation(); // ne zatvara lightbox
         showPrev();
     });
 
-    document.getElementById('nextSlideBtn').addEventListener('click', (e) => {
+    document.getElementById('nextSlideBtnSlika').addEventListener('click', (e) => {
         e.stopPropagation();
         showNext();
     });
