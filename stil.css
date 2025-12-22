@@ -1269,7 +1269,7 @@ body{
     .treciBlok{
         width: 70%;
         height: 90%;
-        padding: 20px;
+        padding: 30px;
         margin-left: 10px;
         margin-right: 10px;
         display: flex;
@@ -1278,26 +1278,5 @@ body{
         align-items: center;
         text-align: center;
     }
-    .cake-wrapper {
-        margin-left: 0;      /* ukloni fiksni offset */
-        margin-top: 30px;    /* malo prostora od teksta */
-        width: 70%;          /* prilagodi širinu torte ekranu */
-        max-width: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* centriraj tortu i slojeve */
-    }
-
-    .candles {
-        justify-content: center; /* centriraj svjećice */
-        gap: 15px;
-        margin-bottom: -10px;
-    }
-
-    .cake-layer.layer-top,
-    .cake-layer.layer-middle,
-    .cake-layer.layer-bottom {
-        width: 100%; /* slojevi se šire prema wrapper-u */
-        max-width: 300px;
-    }
+    
 }
