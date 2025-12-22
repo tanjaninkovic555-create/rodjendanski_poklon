@@ -1248,6 +1248,7 @@ body{
         width: 90%;        /* rješenje ispod puzli */
         max-width: 350px;
         margin: 10px auto 30px auto;
+        flex-direction: column;
     }
     .puzzle-piece:hover{
     transform: scale(1.05);
@@ -1264,5 +1265,9 @@ body{
     background: rgba(255,255,255,0.5);
     border-style: dashed;
     }
-
+    .solution-preview img{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
 }
