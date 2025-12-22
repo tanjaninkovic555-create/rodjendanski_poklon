@@ -8,6 +8,7 @@ let currentPuzzleIndex = 0;
 let currentSlideIndex=0;
 let currentTrack=0;
 let isPlaying=false;
+let musicStartedByUser = false;
 
 function sakrijPrviBlok(){
     var prvi=document.getElementById('prviBlok');
@@ -360,7 +361,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 video.currentTime = 0; // resetuj na početak
             });
             const music = document.getElementById('bgMusic');
-            if (music && music.paused) {
+            if (music && musicStartedByUser) {
                 music.play().catch(() => {});
             }
         });
@@ -420,10 +421,12 @@ function showSurprise(){
 document.getElementById('muzikaBtn').addEventListener('click', function() {
     const music = document.getElementById('bgMusic');
     if (music) {
+        musicStartedByUser = true; // korisnik je kliknuo dugme
         music.currentTime = 0;
         music.play().catch(err => console.log("Muzika nije mogla da se pusti:", err));
     }
 });
+
 
 // 2. Dugme za uključivanje mikrofona
 document.getElementById('micBtn').addEventListener('click', async function() {
