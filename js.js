@@ -129,7 +129,7 @@ function generatePuzzle(imageUrl){
     puzzleBoard.innerHTML='';
     puzzlePieces=[];
 
-    
+
     const solutionImage=document.getElementById('solutionImage');
     if(solutionImage) solutionImage.src=imageUrl;
 
@@ -157,6 +157,7 @@ function generatePuzzle(imageUrl){
 
         puzzleBoard.appendChild(piece);
         puzzlePieces.push(piece);
+        enableTouchForPuzzle(piece);
     }
 }
 
@@ -945,4 +946,45 @@ function stopAndForgetBackgroundMusic() {
     bgMusic.src = '';
 }
 
+function enableTouchForPuzzle(piece) {
+    let touchMoved = false;
 
+    piece.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        touchMoved = false;
+
+        // isto kao mouse drag
+        draggedElement = piece;
+        piece.classList.add('dragging');
+    });
+
+    piece.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        touchMoved = true;
+    });
+
+    piece.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
+        if (!draggedElement) return;
+
+        const touch = e.changedTouches[0];
+        const target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+        // simuliraj drop koristeći POSTOJEĆU logiku
+        if (
+            touchMoved &&
+            target &&
+            target.classList.contains('puzzle-piece') &&
+            target !== draggedElement
+        ) {
+            handleDrop({ 
+                preventDefault: () => {}, 
+                target 
+            });
+        }
+
+        piece.classList.remove('dragging');
+        draggedElement = null;
+    });
+}

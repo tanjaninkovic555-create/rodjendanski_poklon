@@ -1245,7 +1245,7 @@ body{
     }
     .solution-preview img{
         width: 60vw;        /* rješenje ispod puzli */
-        height: 60vw;
+        height: auto;
     }
     .puzzle-piece:hover{
     transform: scale(1.05);
