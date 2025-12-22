@@ -1441,13 +1441,15 @@ body{
 /* ZA JOŠ MANJE EKRANE (MOBITELI) */
 @media (max-width: 600px) {
     .typewriter {
-        font-size: 16px;
+        font-size: 19px;
         width: 0;
         overflow: hidden;
         border-right: 3px solid rgb(19, 5, 5);
         white-space: nowrap;
         animation: typewriter 4s steps(26) 1s forwards, softPop 1.6s ease-in-out infinite;
-        margin: 5px;
+        margin: 2px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     .body{
@@ -1575,9 +1577,9 @@ body{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        width: 90vw;       /* zauzima skoro cijeli ekran */
-        max-width: 350px;
-        height: 90vw;  /* ali ne prelazi 350px */
+        width: 70vw;       /* zauzima skoro cijeli ekran */
+        max-width: 300px;
+        height: 70vw;  /* ali ne prelazi 350px */
         aspect-ratio: 1;   /* kvadrat */
     }
 
@@ -1593,6 +1595,10 @@ body{
         width: 90%;        /* rješenje ispod puzli */
         max-width: 350px;
         margin: 10px auto 30px auto;
+    }
+    .solution-preview img{
+        width: 50vw;   
+        height: auto;     /* rješenje ispod puzli */
     }
     .puzzle-piece:hover{
     transform: scale(1.05);

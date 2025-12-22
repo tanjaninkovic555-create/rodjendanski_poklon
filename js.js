@@ -61,11 +61,7 @@ const videoList = [
 
 const puzzleImages =[
     "images/OIG1.jpg",
-    "images/OIG2.jpg",
-    "images/OIG3.jpg",
-    "images/OIG4.jpg",
-    "images/OIG5.jpg",
-    "images/OIG6.jpg",
+    "images/OIG2.jpg"
 ];
 
 function initializePuzzleGame(){
