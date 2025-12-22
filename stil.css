@@ -859,11 +859,14 @@ body{
     background: rgba(255,255,255,0.95);
     border-radius: 20px;
     padding: 2rem;
+    width: 100%;
     max-width: 600px;
+    min-width: 400px;
     margin: 0 auto;
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     backdrop-filter: blur(10px);
     z-index: 9;
+    box-sizing: border-box;
 }
 
 .player-display{
@@ -929,11 +932,17 @@ body{
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .track-info p{
     color: #666;
     margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .progress-container{
@@ -1345,10 +1354,13 @@ body{
     z-index: 14;
     }
     .music-player{
-        width: 80%;
-        height: auto;
-        padding: 30px;
-        margin-left: 10px;
-        margin-right: 10px;
+        width: 90%;
+        min-width: unset;
+    }
+    .track-info h3, 
+    .track-info p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
