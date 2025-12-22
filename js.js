@@ -599,23 +599,48 @@ function initializeGalleryLightbox(){
     const lightboxImg = document.getElementById('lightboxImg');
     const closeBtn = document.getElementById('lightboxClose');
 
-    items.forEach(img => {
-        img.addEventListener('click', () => {
-            lightboxImg.src = img.src;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // zabrani scroll
-        });
-    });
+    let currentIndex=0;
+
+    function showLightbox(index){
+        currentIndex=index;
+        lightboxImg.src=items[currentIndex].src;
+        lightbox.classList.add('active');
+        document.body.style.overflow='hidden';
+    }
 
     function closeLightbox(){
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
     }
 
+    function showNext(){
+        currentIndex=(currentIndex+1)%items.length;
+        lightboxImg.src=items[currentIndex].src;
+    }
+
+    function showPrev(){
+        currentIndex=(currentIndex - 1 + items.length) %items.length;
+        lightboxImg.src=items[currentIndex].src;
+    }
+
+    items.forEach((img,index) => {
+        img.addEventListener('click',() => showLightbox(index));
+    });
+
     closeBtn.addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', (e) => {
         if(e.target === lightbox) closeLightbox();
+    });
+
+    document.getElementById('prevSlideBtn').addEventListener('click', (e) => {
+        e.stopPropagation(); // ne zatvara lightbox
+        showPrev();
+    });
+
+    document.getElementById('nextSlideBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNext();
     });
 }
 
