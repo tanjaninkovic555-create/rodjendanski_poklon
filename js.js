@@ -431,7 +431,7 @@ document.getElementById('micBtn').addEventListener('click', async function() {
         const checkBlow = () => {
             analyser.getByteFrequencyData(dataArray);
             const sum = dataArray.reduce((a,b) => a+b, 0);
-            if(sum > 10000){ // prag za “puhanje”
+            if(sum > 5000){ // prag za “puhanje”
                 blowOutCandles();
                 return;
             }
