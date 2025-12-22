@@ -1270,7 +1270,7 @@ body{
         width: 70%;
         height: 90%;
         padding: 30px;
-        margin-left: 10px;
+        margin-left: 20px;
         margin-right: 10px;
         display: flex;
         flex-direction: column;
@@ -1286,5 +1286,16 @@ body{
         align-items: center;  /* centriranje */
         width: auto;          /* slojevi zadržavaju svoje dimenzije */
     }
-    
+    #muzikaBtn{
+        width: 60%;
+        padding: 0.9rem;
+        font-size: 1rem;
+        align-items: center;
+    }
+    #micBtn{
+        width: 60%;
+        padding: 0.9rem;
+        font-size: 1rem;
+        align-items: center;
+    }
 }
