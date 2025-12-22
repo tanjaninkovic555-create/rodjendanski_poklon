@@ -1143,7 +1143,7 @@ body{
 
 @media (max-width: 768px) {
     .typewriter {
-        font-size: 16px;
+        font-size: 19px;
         width: 0;
         overflow: hidden;
         border-right: 3px solid rgb(19, 5, 5);
@@ -1156,9 +1156,16 @@ body{
     }
 
     .blok {
-        width: 90%;
+        width: 80%;
         height: auto;
         padding: 30px;
-        margin: 4px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .zdravo{
+        font-size: 18px;
+    }
+    .zdravo1{
+        font-size: 15px;
     }
 }
