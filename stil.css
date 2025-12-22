@@ -1209,7 +1209,7 @@ body{
     }
 
     .puzzle-container {
-        display: grid;
+        display: flex;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px 5px;
         justify-content: center;
