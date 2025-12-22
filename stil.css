@@ -871,6 +871,7 @@ body{
     gap: 2rem;
     margin-bottom: 2rem;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .album-art{
@@ -920,7 +921,8 @@ body{
 }
 
 .track-info{
-    flex:1;
+    flex:1 1 0;
+    min-width: 0;
 }
 
 .track-info h3{
@@ -1341,5 +1343,12 @@ body{
     object-fit: cover;
     display: block;
     z-index: 14;
+    }
+    .music-player{
+        width: 80%;
+        height: auto;
+        padding: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
