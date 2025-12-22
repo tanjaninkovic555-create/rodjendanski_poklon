@@ -29,7 +29,7 @@ body{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke:1.3px black;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     margin-top: 50px;
     white-space: nowrap;
     overflow: hidden;
@@ -170,14 +170,6 @@ body{
     gap: 2rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
-}
-
-.difficulty-selector select{
-    padding: 0.5rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: white;
 }
 
 .game-stats{
@@ -1444,4 +1436,178 @@ body{
     .nav-menu {
         gap: 1rem;
     }
+}
+
+/* ZA JOŠ MANJE EKRANE (MOBITELI) */
+@media (max-width: 600px) {
+    .typewriter {
+        font-size: 16px;
+        width: 0;
+        overflow: hidden;
+        border-right: 3px solid rgb(19, 5, 5);
+        white-space: nowrap;
+        animation: typewriter 4s steps(26) 1s forwards, softPop 1.6s ease-in-out infinite;
+        margin: 5px;
+    }
+
+    .body{
+        align-items: center;
+    }
+
+    .blok{
+        width: 80%;
+        height: 70%;
+        margin: 4;
+    }
+    .hero-title-animate-bounce {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .gallery-item img {
+        height: 150px;
+    }
+
+    .slide video {
+        height: 200px;
+    }
+
+    .cake-wrapper {
+        width: 150px;
+        margin-top: 30px;
+    }
+
+    .cake-layer.layer-top {
+        width: 70px;
+        height: 30px;
+    }
+
+    .cake-layer.layer-middle {
+        width: 100px;
+        height: 50px;
+    }
+
+    .cake-layer.layer-bottom {
+        width: 140px;
+        height: 60px;
+    }
+
+    .flame {
+        width: 6px;
+        height: 10px;
+    }
+
+    .candles {
+        gap: 5px;
+    }
+
+    .music-player {
+        padding: 0.5rem;
+    }
+
+    .control-btn, .play-pause-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .play-pause-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    .blok1{
+        width: 60%;
+        height: auto;
+        padding: 15px;
+    }
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Vrijeme + potezi ostaju u jednom redu */
+    .game-stats {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 90%;
+    }
+
+    .stat {
+        flex: 1;
+        padding: 0.8rem;
+    }
+
+    .stat span:last-child {
+        font-size: 1.2rem;
+    }
+
+    /* Dugmad puna širina, jedno ispod drugog */
+    .game-btn {
+        width: 50%;
+        padding: 0.9rem;
+        font-size: 1rem;
+        align-items: center;
+    }
+
+    /* "Složeno" centrirano ispod dugmadi */
+    .game-controls > div[style*="Složeno"] {
+        margin-top: 0.5rem !important;
+        font-size: 0.95rem;
+    }
+
+    .puzzle-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px 5px;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        margin: 20px auto;
+    }
+
+    .puzzle-board {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        width: 90vw;       /* zauzima skoro cijeli ekran */
+        max-width: 350px;
+        height: 90vw;  /* ali ne prelazi 350px */
+        aspect-ratio: 1;   /* kvadrat */
+    }
+
+    .puzzle-piece {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        aspect-ratio: 1;
+        cursor: pointer;
+    }
+    .solution-preview {
+        width: 90%;        /* rješenje ispod puzli */
+        max-width: 350px;
+        margin: 10px auto 30px auto;
+    }
+    .puzzle-piece:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+    }
+
+    .puzzle-piece.dragging{
+    opacity: 0.7;
+    transform: rotate(5deg) scale(1.1);
+    }
+
+    .puzzle-piece.empty{
+    background: rgba(255,255,255,0.5);
+    border-style: dashed;
+    }
+
 }

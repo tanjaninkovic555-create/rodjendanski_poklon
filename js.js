@@ -420,7 +420,7 @@ if(micBtn){
             const checkBlow = () => {
                 analyser.getByteFrequencyData(dataArray);
                 const sum = dataArray.reduce((a,b) => a+b, 0);
-                if(sum > 10000){
+                if(sum > 5000){
                     blowOutCandles();
                     return;
                 }
