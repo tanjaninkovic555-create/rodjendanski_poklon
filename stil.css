@@ -169,14 +169,6 @@ body{
     flex-wrap: wrap;
 }
 
-.difficulty-selector select{
-    padding: 0.5rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: white;
-}
-
 .game-stats{
     display: flex;
     gap: 2rem;
@@ -1224,6 +1216,7 @@ body{
         align-items: center;
         padding: 0 10px;
         margin: 20px auto;
+        flex-direction: column;
     }
 
     .puzzle-board {
@@ -1248,7 +1241,7 @@ body{
         width: 90%;        /* rješenje ispod puzli */
         max-width: 350px;
         margin: 10px auto 30px auto;
-        flex-direction: column;
+        margin-top: 1rem;
     }
     .solution-preview img{
         width: 60vw;        /* rješenje ispod puzli */
