@@ -777,6 +777,10 @@ function generateVideoSlides() {
         videoEl.addEventListener('play', () => {
             stopBackgroundMusic();
         });
+        videoEl.addEventListener('ended', () => {
+        changeSlide(1);
+        });
+
 
         slideDiv.appendChild(videoEl);
 
