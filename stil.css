@@ -1059,7 +1059,7 @@ body{
 
 .pismoBlok{
     width: 500px;
-    height: 350px;
+    height: auto;
     padding: 30px;
     background-color: #f3c2d7;
     margin: 50px 350px 50px 350px;
@@ -1358,5 +1358,14 @@ body{
     .track-info h3{
         white-space: normal;
         overflow-wrap: break-word;
+    }
+    .pismoBlok{
+        width: 80%;
+        max-width: 350px;
+        min-width: 350px;
+        padding: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: auto;
     }
 }
