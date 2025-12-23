@@ -913,12 +913,13 @@ function selectTrack(trackIndex){
     const playlistItems = document.querySelectorAll('.playlist-item');
     playlistItems.forEach(item => item.classList.remove('active'));
 
-    if(playlistItems[trackIndex]){
-        playlistItems[trackIndex].classList.add('active');
-    }
-
     currentTrack=trackIndex;
     switchTrack();
+
+    audioPlayer.play();
+    playPauseBtn.textContent = '⏸️';
+    vinylRecord.classList.add('playing');
+    isPlaying = true;
 }
 
 function switchTrack(){
