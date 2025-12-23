@@ -867,6 +867,10 @@ function initializeMusicPlayer(){
 
     playPauseBtn.addEventListener('click', togglePlay);
     volumeSlider.addEventListener('input', changeVolume);
+    volumeSlider.addEventListener('change', changeVolume);
+    volumeSlider.addEventListener('touchstart', changeVolume);
+    volumeSlider.addEventListener('touchmove', changeVolume);
+
     audioPlayer.addEventListener('timeupdate', updateProgressBar);
     audioPlayer.addEventListener('ended', nextTrack);
 
