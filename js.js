@@ -106,6 +106,7 @@ function startNewGame(){
 
     generatePuzzle(puzzleImages[currentPuzzleIndex]);
     shufflePuzzle();
+    startGameTimer();
 
     const gameCompletion=document.getElementById('gameCompletion');
     if(gameCompletion){
@@ -386,19 +387,6 @@ document.addEventListener('DOMContentLoaded',function(){
     if(nextBtn){
         nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
     }
-
-
-    const btnStart = document.getElementById('btnStart');
-
-    if(btnStart){
-        btnStart.addEventListener('click', () => {
-            clearInterval(gameTimer);
-            gameStartTime = Date.now();
-            startGameTimer();
-        });
-    }
-
-
 });
 
 function pokreniKonfete() {
