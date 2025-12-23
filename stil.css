@@ -1355,4 +1355,8 @@ body{
         margin-left: 10px;
         margin-right: 10px;
     }
+    .track-info h3{
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
 }
