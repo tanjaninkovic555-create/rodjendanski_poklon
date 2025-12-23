@@ -1361,8 +1361,8 @@ body{
     }
     .pismoBlok{
         width: 80%;
-        max-width: 350px;
-        min-width: 350px;
+        max-width: 300px;
+        min-width: 300px;
         padding: 30px;
         margin-left: 10px;
         margin-right: 10px;
