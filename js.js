@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded',function(){
     const heartWrap = document.getElementById("heartWrap");
     heartWrap.innerHTML = ""; // ukloni srce
     const pismoTekst = document.querySelector(".pismoTekst");
-    pismoTekst.innerHTML = "<h2>Novi sadržaj 💖</h2><p>Ovo je novi blok koji se pojavi</p>";
+    pismoTekst.innerHTML = "<h2>Srećan rođendan, ljubavi 🎂</h2><p>Htjela sam da ti ovo malo iznenađenje kaže ono što nekad ne stignem uvijek riječima. Hvala ti što si tu i što sve nekako držiš na svom mjestu, čak i kad je haos.</p><p>Želim nam još puno uspomena, zagrljaja i malih ludosti koje su samo naše. Volim te baš takvog kakav jesi. ❤️</p>";
     });
 
     const prevBtn = document.getElementById('prevSlideBtn');
