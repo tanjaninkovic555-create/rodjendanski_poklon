@@ -1349,9 +1349,10 @@ body{
     }
     .music-player {
         width: 80%;          /* može biti fiksno ili relativno */
-        max-width: 500px;    /* ne prelazi 500px */
-        min-width: 500px;    /* fiksno, ne skuplja se */
-        padding: 20px;
-        margin: 20px auto;
+        max-width: 350px;    /* ne prelazi 500px */
+        min-width: 350px;    /* fiksno, ne skuplja se */
+        padding: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
