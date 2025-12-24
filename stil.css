@@ -788,8 +788,12 @@ body{
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     max-width: 800px;
-    margin: 0 auto;
     z-index: 9;
+    width: 70%;
+    height: auto;
+    padding: 20px;
+    background-color: white;
+    margin: 30px auto 50px auto;
 }
 
 .slide{
@@ -1366,5 +1370,13 @@ body{
         margin-left: 10px;
         margin-right: 10px;
         height: auto;
+    }
+    .slideshow-container{
+        width: 80%;
+        max-width: 300px;
+        height: auto;
+        padding: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
