@@ -824,6 +824,7 @@ body{
     cursor: pointer;
     border-radius: 50%;
     transition: all 0.3s ease;
+    z-index: 50;
 }
 
 .slide-btn:hover{
@@ -839,7 +840,7 @@ body{
     right: 1rem;
 }
 
-.slide-indicators{
+.slide-indicator{
     display: flex;
     justify-content: center;
     gap: 0.5rem;
