@@ -26,8 +26,8 @@ function sakrijPrviBlok(){
 }
 const videoList = [
     'video/video14.mp4',
-    'video/video2.mp4',
     'video/video3.mp4',
+    'video/video2.mp4',
     'video/video4.mp4',
     'video/video5.mp4',
     'video/video6.mp4',
